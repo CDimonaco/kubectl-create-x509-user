@@ -1,0 +1,14 @@
+version: "3"
+
+tasks:
+  lint:
+    desc: "Lint the project with golangci-lint"
+    cmd: golanci-lint run
+
+  build-dev:
+    desc: "Build the binary for development without any optimization or stripping"
+    cmd: go build -o _build/kubectl-create-x509-user cmd/kubectl-create-x509-user/main.go
+    
+  build-release:
+    desc: "Build the binary for release"
+    cmd: go build -ldflags="-w -s" -o _build/kubectl-create-x509-user cmd/kubectl-create-x509-user/main.go
